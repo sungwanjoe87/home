@@ -11,7 +11,6 @@ for i in range(500):
 
 arrs = []
 
-
 for i in range(0,5):
     arr2 = [randNum[5*i+j] for j in range(0,5)]
     arrs.append(arr2)
