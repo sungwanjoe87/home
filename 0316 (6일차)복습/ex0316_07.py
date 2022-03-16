@@ -28,6 +28,8 @@ print('1. 초등1-2학년')
 print('2. 초등3-4학년')
 ch1 = int(input('난이도를 선택하세요>>'))
 
+
+
 # 난이도 선택
 if ch1==1:
     level=words
@@ -42,14 +44,14 @@ for word in level:
         if inwds == 0:
             print('프로그램을 종료합니다.')
             break
-    if words[word] == inwds:
-        print('정답입니다. {} : {}'.format(word,words[word]))
+    if level[word] == inwds:
+        print('정답입니다. {} : {}'.format(word,level[word]))
         #     [입력한value, 정답, key,value]
-        wlist=[inwds,'O',word,words[word]]
+        wlist=[inwds,'O',word,level[word]]
         wordlist.append(wlist)
     else:
-        print('오답입니다. {} : {}'.format(word,words[word]))
-        wlist=[inwds,'X',word,words[word]]
+        print('오답입니다. {} : {}'.format(word,level[word]))
+        wlist=[inwds,'X',word,level[word]]
         wordlist.append(wlist)
 
 # 정답, 오답 개수변수
