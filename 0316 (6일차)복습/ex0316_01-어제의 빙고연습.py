@@ -1,5 +1,5 @@
 from random import *
-import random 
+
 # 1. 리스트 생성
 # 2. 리스트 1-25까지 숫자입력
 randNum = [ i+1 for i in range(25) ]
