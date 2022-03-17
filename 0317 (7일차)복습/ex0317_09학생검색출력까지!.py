@@ -82,7 +82,7 @@ while True:
                 count=1
                 break
         if count ==0:
-            print('해당하는 {}학생이 업습니다.'.format(searchName))
+            print('해당하는 {}학생이 없습니다.'.format(searchName))
 
     elif choice == 3:
         print('학생성적삭제를 입력하셨습니다.')
