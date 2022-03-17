@@ -8,7 +8,7 @@ stuSave = [] #최종 저장 리스트.
 sCount = 0
 while True:
     print('[학생성적입력프로그램]')
-    print('='*30)
+    print('='*50)
     print('1.학생성적입력')
     print('2.학생성적수정')
     print('3.학생성적삭제')
@@ -16,7 +16,7 @@ while True:
     print('5.학생검색출력')
     print('6.등수처리')
     print('0.프로그램종료')
-    print('='*30)
+    print('='*50)
     #숫자만 받고 숫자가 아닐경우 다시 받기.
 
     choice = input('원하는 번호를 입력하세요.>>')
