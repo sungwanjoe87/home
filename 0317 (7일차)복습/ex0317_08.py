@@ -59,9 +59,16 @@ while True:
                     stu['total'] = stu['kor']+stu['eng']
                     stu['avg'] = stu['total']/2
                     print('국어점수가 변경되었습니다.!!')
+
                 elif searchNo==2: # 영어점수수정
-                    pass
-                
+                    print('현재 영어점수{}'.format(stu['eng'])
+                    score=int(input('변경할 국어점수를 입력'))
+                    stu['eng']=score #현재 영어점수 ->변경 영어점수
+                    #합계,평균,등수 변경
+                    stu['total'] = stu['kor']+stu['eng']
+                    stu['avg'] = stu['total']/2
+                    Print('영어점수가 변경되었습니다.!!')
+
                 elif searchNo==0: # 상위메뉴이동
                     print('상위메뉴로 이동합니다.')
                 count=1 # 학생검색이 됨.
