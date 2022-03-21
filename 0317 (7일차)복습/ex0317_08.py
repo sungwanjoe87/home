@@ -67,7 +67,7 @@ while True:
                     #합계,평균,등수 변경
                     stu['total'] = stu['kor']+stu['eng']
                     stu['avg'] = stu['total']/2
-                    Print('영어점수가 변경되었습니다.!!')
+                    print('영어점수가 변경되었습니다.!!')
 
                 elif searchNo==0: # 상위메뉴이동
                     print('상위메뉴로 이동합니다.')
