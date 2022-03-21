@@ -19,7 +19,7 @@ def cal(v1,v2,v3=1):
     rlist.append(result3)
     result4 = v1/v2/v3
     rlist.append(result4)
-    # rlist= [result1,result2,result3,result4] 
+    # rlist= [result1,result2,result3,result4]
     return rlist
     # return result1,result2,result3,result4 # 튜플타입으로 리턴
 
