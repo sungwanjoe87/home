@@ -61,7 +61,7 @@ while True:
                     print('국어점수가 변경되었습니다.!!')
 
                 elif searchNo==2: # 영어점수수정
-                    print('현재 영어점수{}'.format(stu['eng'])
+                    print('현재 영어점수{}'.format(stu['eng']))
                     score=int(input('변경할 국어점수를 입력'))
                     stu['eng']=score #현재 영어점수 ->변경 영어점수
                     #합계,평균,등수 변경
