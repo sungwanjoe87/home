@@ -49,6 +49,6 @@ my_friend("오징어")
 def my_calc(x,y):
     z = x*y
     return z
-
-temp = my_calc(3,4)
-print(temp)
+z=0
+z = my_calc(3,4)
+print(z)
