@@ -115,9 +115,16 @@ while True:
                 break
         if count ==0:
             print('검색하신 이름에 해당하는 학생이 없습니다.')    
-    elif choice == 6:
-        print('등수처리를 입력하셨습니다.')
-        pass
+    elif choice==6:
+        for stu in stuSave:
+            rcount=1
+            for stu2 in stuSave:
+                if stu['total'] < stu2['total']: #total점수 비교
+                    rcount += 1    # stu2가 더 클경우 1증가
+            stu['rank'] = rcount   # 등수입력        
+        
+        print('등수처리가 완료되었습니다.')
+
     elif choice == 0:
         print('프로그램을 종료합니다...')
         break
