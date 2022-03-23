@@ -1,6 +1,5 @@
 import os
 import json
-from logging import exception
 
 stuSave=[] #전역변수 stuSave
 sCount = 0
@@ -17,7 +16,10 @@ def jsonSave():
 # 학생번호 증가함수
 def stuCount():
     global sCount
-    sCount = stuSave[-1]['stuno']+1
+    if len(stuSave) ==0:
+        sCount =1
+    else:
+        sCount = stuSave[-1]['stuno']+1
     return sCount
 
 
