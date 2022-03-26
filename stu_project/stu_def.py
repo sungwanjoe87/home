@@ -6,12 +6,17 @@ sCount = 0
 count=0      # 학생검색 되었는지 체크하는 변수
 # json읽기 함수
 def jsonRead():
-    global stuSave # 전역변수에 있는 stuSave 가지고 오게 함.
-    stuSave = json.load(open('stuData.json','r'))
+    if 'stuData.json' in os.listdir():
+        stuSave = json.load(open('stuData.json','r'))
+    else:
+        stuSave = []
 
 # json저장 함수
 def jsonSave():
-    json.dump(stuSave,open('stuData.json','w'))
+    if 'stuData.json' in os.listdir():
+        json.dump(stuSave,open('stuData.json','w'))
+    else:
+        json.dump(stuSave,open('stuData.json','w'))
 
 # 학생번호 증가함수
 def stuCount():
@@ -25,10 +30,6 @@ def stuCount():
 
 # 화면출력함수
 def screen_print():
-    #stuSave.json이 해당 파일 리스트에 있는지 확인.
-    if not 'stuSave.json' in os.listdir():
-        jsonSave() #저장 함수
-        
     jsonRead()
     stuCount()
     print('[ 학생성적프로그램 ]')
@@ -116,7 +117,7 @@ def stu_modify():
 
 # 학생삭제 함수
 def stu_delete():
-    jsonRead() #학생 입력리스트 호출
+    jsonRead()#학생 입력리스트 호출
     print('학생성적 삭제를 선택하셨습니다.')
     searchName = input('삭제할 이름을 입력하세요.>>')
     count=0
@@ -133,7 +134,7 @@ def stu_delete():
 
 #학생성적 전체 출력함수
 def stu_print():
-    jsonRead
+    jsonRead()
     print('번호','이름','국어','영어','합계','평균','등수',sep='\t')  
     print('-'*60)
     # [[1,홍길동,100,100,200,100.0,0]]
