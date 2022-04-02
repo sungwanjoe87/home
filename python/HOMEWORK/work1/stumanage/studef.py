@@ -100,16 +100,18 @@ def stuModify():
 #학생성적 삭제
 def stuDelete():
     print('학생삭제를 선택하셨습니다.')
-    count =0
+    count = 0
     searchName = input('삭제할 이름을 입력하세요>>')
     for i,stu in enumerate(stuSave):
         if stu ==searchName:
             print('{} 학생이 검색되었습니다.'.format(searchName))
             flag = input('정말 삭제하시겠습니까? (y or x)')
-            if flag =='y' or flag =='x':
+            if flag =='y':
                 del(stuSave[i])
                 print('{}학생이 삭제 되었습니다.'.format(searchName))
                 count=1
+                break
+            elif flag =='x':
                 break
         elif count ==0:
             print('{} 학생이 없습니다. 다시 입력하세요'.format(searchName))
