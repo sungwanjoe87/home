@@ -18,7 +18,7 @@ class Student: #main이 있는 파일 하위에 package화 된 class
         self.total =kor + eng + math
         self.avg = self.total/3
         self.rank = 0
-    
+
 
     def __str__(self): #문자열로 반환해줌.
         stuprint = '{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}'.format(self.stuno,\
@@ -39,6 +39,7 @@ class Student: #main이 있는 파일 하위에 package화 된 class
             self.kor=kor
             self.total =kor + self.eng + self.math
             self.avg = self.total/3
+            
         else:
             print('입력이 잘못되었습니다')
 
@@ -47,7 +48,7 @@ class Student: #main이 있는 파일 하위에 package화 된 class
 
     def setEng(self,eng): #eng에 입력되는 값이 음수일 경우 원래 eng값이로 입력
         if eng>=0:
-            self.eng=eng
+            self.eng = eng
             self.total = self.kor + eng + self.math
             self.avg = self.total/3
         else:
