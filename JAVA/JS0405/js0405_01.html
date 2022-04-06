@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // mouseover != mouseleave, focus !=blur
+        $(function(){
+            //.on은 이후 여러개를 적용시키고자 할 때 쓴다.
+            $("#pw").on({
+                "mouseover focus click":function(){
+                    $("#pw").css({'background':'aqua'})
+
+                }
+                
+
+            })
+
+            //.적용하고자하는 것은 하나만 적용.
+            $("#pw").mouseleave(function(){
+                $('#pw').css({'background':'white'});
+
+            })
+
+
+
+        });
+
+    </script>
+    <style>
+        
+
+    </style>
+
+</head>
+<body>
+    <form action="#" method="get" name="frm">
+        <label>아이디</label>
+        <input type="text" name="id" id="id"><br>
+        <label>패스워드</label>
+        <input type="password" name="pw" id="pw"><br>
+        <span id="idCheck"></span>
+        <br>
+        <label>패스워드확인</label>
+        <input type="password" name="pw2" id="pw2"><br>
+        <button type="button" id="memberBtn">회원가입</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+    //css적용방법
+    // event 1개, 2개이상 사용하려면 on
+    // css적용하려면 css, 속성에 적용하려면 attr
+        $(function(){
+            $("li").click(function(){
+                $(this).css({"border":"1px solid black","background":"yellow"})
+        
+            })
+
+        })    
+
+
+
+    </script>
+    <style>
+        ul{list-style: none;}
+
+    </style>
+
+
+</head>
+<body>
+    <ul>
+        <li>다음페이지</li>
+        <li>구글</li>
+        <li>네이버</li>
+    </ul>
+
+
+
+</body>
+</html>
