@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            let arr=[]
+            $("#hBtn").click(function(){
+                arr=[]
+                //alert("checkbox의 갯수 : " + $("input:checkbox[name='hobby']").length)
+                //$("#input[name='hobby']:checked").length
+                $("input[name='hobby']:checked").each(function(){
+                    arr.push($(this).val())
+                })
+
+                $("#txt").text(arr)
+                
+            })//HBtn
+            
+            
+
+        })//jquery
+
+    </script>
+</head>
+<body>
+    <form>
+        <label>취미</label><br>
+        <input type="checkbox" name="hobby" value="game" id="game">
+        <label for="game">게임</label>
+        <input type="checkbox" name="hobby" value="golf" id="golf">
+        <label for="golf">골프</label>
+        <input type="checkbox" name="hobby" value="swim" id="swim">
+        <label for="swim">수영</label>
+        <br>
+        <button type="button" id="hBtn">확인</button>
+
+        <div id="txt">취미를 선택해 주세.</div>
+    </form>
+</body>
+</html>

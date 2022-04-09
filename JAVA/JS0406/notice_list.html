@@ -77,11 +77,12 @@
       $("#fmodify").click(function(){
         //td의 id를 가져옴.
         let temp = $("#tdid").val()
-        // 위치: #n의 td:nth=chlid의 4번째 것을 가지고 와서 바꿈.
+        // 위치: #n의 td:nth=chlid의 n번째 것을 가지고 와서 바꿈.
         $(temp+">td:nth-child(4)").text($("#fname").val())
         $(temp+">td:nth-child(2)").text($("#ftitle").val())
         $(temp+">td:nth-child(3)").text($("#fdate").val())
 
+        //넣고 난 뒤에 val값 ''으로 비우기.
         $("#fname").val('')
         $("#ftitle").val('')
         $("#fdate").val('')

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            $("#dataBtn").click(function(){
+                //alert('test')
+                $.ajax({
+                    url:"https://api.odcloud.kr/api/apnmOrg/v1/list?page=1&perPage=4000&serviceKey=xO8U4%2B2gyp%2BeSgRoKzTowy81BIjSOBTkP7oCSileX173VBZOmT7UV6yih9e41MOkLAxeRiBiKOVn0xI%2FXyVCuA%3D%3D",
+                    //data:{"page":2}, //2page
+                    dataType:"json",
+                    success:function(data){
+                        alert('성공')
+                        console.log("data : "+data)
+
+                        let str =''
+                        let scount=0
+                        for(let i=0; i<data.data.length; i++){
+                            str += '<tr>'
+                            str += '<td>'+data.data[i].orgnm+'</td>'
+                            str += '<td>'+data.data[i].orgZipaddr+'</td>'
+                            str += '<td>'+data.data[i].orgTlno+'</td>'
+                            str += '<td>'+data.data[i].lunchSttTm+'~'+data.data[i].lunchEndTm+'</td>'
+                            str += '<td>'+data.data[i].endTm+'</td>'
+                            str += '</tr>'
+                            scount=0
+                        }
+                        $("#btable").html(str)
+                    },
+                    error:function(){
+                        alert('실패')
+                    }
+
+
+
+                })//ajax
+
+
+            })//dataBtn 클릭
+
+
+        })//function
+    </script>
+    <style>
+        table{box-sizing: border-box; border-radius: 5%;}
+        th,tr,td{box-sizing: border-box; text-align: center; border: 1px solid black;}
+        th{background-color: black; color: white;}
+    </style>
+</head>
+<body>
+    <button id="dataBtn">데이터가져오기</button>
+    <div id="txt"></div>
+    <div id="txt2"></div>
+    <table>
+        <colgroup>
+          <col width="20%">
+          <col width="20%">
+          <col width="20%">
+          <col width="30%">
+          <col width="10%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>기관이름</th>
+            <th>주소</th>
+            <th>전화번호</th>
+            <th>점심시간</th>
+            <th>업무종료시간</th>
+          </tr>
+  
+        </thead>
+        <tbody id="btable">
+          <tr>
+            <td>인제대학교 서울백병원</td>
+            <td>서울특별시 중구 마른내로 9-9,(저동2가)</td>
+            <td>02-2270-0114</td>
+            <td>1200~1300</td>
+            <td>1600</td>
+          </tr>
+        </tbody>
+        
+      </table>
+</body>
+</html>

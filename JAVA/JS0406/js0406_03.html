@@ -7,38 +7,75 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Document</title>
     <script>
-        //제이쿼리 선언.
-        $(function(){
+        //제이쿼리 선언
+       $(function(){
             $("#ajaxBtn").click(function(){
+                //ajax선언
                 $.ajax({
                     url:"JS/MOCK_DATA.json",
                     dataType:"json",
-                    data:{"userId":"admin","userPw":"1111"},
-                    success:function(data){
-                        alert('성공')
-                        $("txt").text(data)
+                    /* data:{"userId":"admin","userPw":"1111"}, */
+                    success:function(data){ //data=[{},{},{}.....] MOCK_DATA.json
+                        alert('성공 : ' +data.length)
+                        let str=''
+                        for(let i=0; i<data.length; i++){
+                            str += '<tr>'
+                            str += '<td>'+data[i].id+'</td>'
+                            str += '<td>'+data[i].first_name+'</td>'
+                            str += '<td>'+data[i].last_name+'</td>'
+                            str += '<td>'+data[i].email+'</td>'
+                            str += '<td>'+data[i].gender+'</td>'
+                            str += '</tr>'
+                        }
+
+                        $("#btable").html(str)
                     },
                     error:function(){
                         alert('실패')
                     }
-    
-    
                 })//ajax
-
-
             })//ajaxBtn
 
 
-        })//function
-        
+
+       })//function
 
     </script>
+    <style>
+        div{width: 1100px; margin: 0 auto;}
+        #ajaxBtn{width: 200px; height: 50px; margin: 50px 0 30px 0;
+        cursor: pointer;}
+        table,th,td{border: 1px solid black ; border-collapse: collapse;
+            width: 1100px; margin-top: 50px; margin: 0 auto; text-align: center;}
+        th,td{height: 30px;}
 
+    </style>
 </head>
 <body>
-    <button id="ajaxBtn">ajax 읽어오기</button>
-    <div id="txt">
-
+    <div>
+        <button id="ajaxBtn" >ajax 읽어오기</button>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>성</th>
+                <th>이름</th>
+                <th>이메일</th>
+                <th>성별</th>
+            </tr>
+        </thead>
+        <tbody id="btable">
+            <tr>
+                <td>1</td>
+                <td>홍</td>
+                <td>길동</td>
+                <td>gilong@gmail.com</td>
+                <td>male</td>
+            </tr>
+
+        </tbody>
+    </table>    
+
 </body>
 </html>
