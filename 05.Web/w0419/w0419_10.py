@@ -7,7 +7,7 @@ res = requests.get(url,headers=headers)
 soup = BeautifulSoup(res.text,"lxml")
 
 #평균 평점
-# float(get_text)
+# float(cartoon.find("strong").get_text())
 
 table = soup.find("table",{"class":"viewList"})
 # print(cartoons)
