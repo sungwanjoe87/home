@@ -10,9 +10,9 @@ soup = BeautifulSoup(res.text,"lxml")
 # float(get_text)
 
 table = soup.find("table",{"class":"viewList"})
+# print(cartoons)
 cartoons = table.find_all("tr")
 total_rates = 0
-# print(cartoons)
 cartoons=cartoons[1:]
 for i, cartoon in enumerate(cartoons):
     ctext = cartoon.find("td",{"class":"title"}).a.get_text()
@@ -26,6 +26,6 @@ for i, cartoon in enumerate(cartoons):
     print("별점 : {}점".format(rate))
 print()
 print("-"*90)
-print("전체 점수 : {}" .format(round(total_rates,2)))
+print("전체 점수 : {}".format(round(total_rates,2)))
 print("평균 점수 : {}".format(total_rates/len(cartoons)))
 
