@@ -11,9 +11,20 @@ soup = BeautifulSoup(res.text,"lxml")
 
 table = soup.find("table",{"class":"viewList"})
 cartoons = table.find_all("tr")
+total_rates = 0
 # print(cartoons)
 cartoons=cartoons[1:]
 for i, cartoon in enumerate(cartoons):
     ctext = cartoon.find("td",{"class":"title"}).a.get_text()
-    curl = cartoon.find
+    curl = cartoon.find("td",{"class":"title"}).a["href"]
+    rate = cartoon.find("strong").get_text()
+    total_rates += float(rate)
+    print()
     print("{}번 : {}".format(i+1,ctext))
+    print("바로가기 링크 : {}".format("https://comic.naver.com"+curl))
+    print("-"*90)
+    print("별점 : {}점".format(rate))
+print()
+print("-"*90)
+print("전체 점수 : {}" .format(round(total_rates,2)))
+print("평균 점수 : {}".format(total_rates/len(cartoons)))
