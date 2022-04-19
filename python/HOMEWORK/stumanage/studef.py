@@ -40,13 +40,13 @@ def topTitle():
     print('-'*60)
 
 # 학생전체출력        
-def stuoutput():
+def stuOutput():
     topTitle()
     for stu in stuSave:
         print(stu) 
         
 # 학생검색출력 - eq
-def stusearch():
+def stuSearch():
     print()
     print('[ 학생검색출력 ]')
     sname = input('학생이름을 입력하세요.>>')
@@ -101,15 +101,18 @@ def stuDelete():
         if stu ==sname:
             print('{} 학생이 검색되었습니다.'.format(sname))
             flag = input('정말 삭제하시겠습니까?')
-            if flag == 'y' or flag =='X':
+            if flag == 'y':
                 del(stuSave[i])
                 print('{}학생이 삭제 되었습니다.'.format(sname))
                 count =1
                 break
+            elif flag =='X':
+                break
         elif count ==0:
             print('{}학생이 없습니다.'.format(sname))
 
-def sturank ():
+def stuRank ():
+    print('학생등수 처리를 선택하셨습니다.')
     for stu1 in stuSave:
         rcount =1
         for stu2 in stuSave:

@@ -12,10 +12,10 @@ while True:
         stuInput()    # 학생성적입력
         
     elif choice == 2:
-        stuoutput()   # 학생전체출력 
+        stuOutput()   # 학생전체출력 
         
     elif choice == 3:
-        stusearch()   # 학생검색출력    
+        stuSearch()   # 학생검색출력    
             
     elif choice ==4: 
         stuModify()  #학생검색수정
@@ -24,8 +24,7 @@ while True:
         stuDelete() #학생성적 삭제
     
     elif choice ==6:
-        print('학생등수 처리를 선택하셨습니다.')
-        sturank() #학생등수 처리
+        stuRank() #학생등수 처리
     elif choice ==0:
         print('프로그램을 종료합니다.')
         break
