@@ -12,8 +12,8 @@ soup = BeautifulSoup(res.text,"lxml")
 table = soup.find("table",{"class":"viewList"})
 # print(cartoons)
 cartoons = table.find_all("tr")
-total_rates = 0
 cartoons=cartoons[1:]
+total_rates = 0
 for i, cartoon in enumerate(cartoons):
     ctext = cartoon.find("td",{"class":"title"}).a.get_text()
     curl = cartoon.find("td",{"class":"title"}).a["href"]
