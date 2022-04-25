@@ -1,4 +1,3 @@
-# https://fenderist.tistory.com/168  find 요소 설명
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import requests
@@ -11,7 +10,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 # 브라우저 화면의 상태를 알려주는 라이브러리
 from selenium.webdriver.support import expected_conditions as EC
-
+#csv 라이브러리
+import csv
 
 
 # webdriver 크롬브라우저 변수 할당 
@@ -60,6 +60,7 @@ browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[9]/div[2]/div[1]
 
 # 항공권 검색버튼 클릭
 browser.find_element_by_class_name("searchBox_txt__3RoCw").click()
+time.sleep(2)
 
 
 # 페이지 로딩완료까지 대기
@@ -96,39 +97,47 @@ flights = soup.find_all("div",{"class":"domestic_Flight__sK0eA result"})
 # print(flights)
 # print("검색 개수 : ",len(flights))
 
-for flight in flights:
+#파일로 저장
+f=open('항공권가격.csv', 'w',encoding='utf-8-sig',newline='')
+writer = csv.writer(f)
+
+#리스트 선언
+flightList = []
+
+for i,flight in enumerate(flights):
     flightrow = flight.find("div",{"class":"domestic_inner__15-bD"})
     flightrow_flight = flightrow.find("div",{"class":"domestic_schedule__1Whiq"})
     flightrow_flight = flightrow_flight.find("div",{"class":"domestic_item__2B--k"})
     
+    flightPrice = flights[i].find("i",{'class':'domestic_num__2roTW'})
+    flightPrice = flightPrice.get_text()
+    flightPrice = flightPrice.replace(',',"")
+    flightPriceFinal = int(flightPrice)
     
-    #항공사 이름.
-    flightName = flightrow_flight.find("div",{"class":"heading"}).img["alt"]
-    print("항공사 이름: {}".format(flightName))
-    #항공기 편도 가격.
-    flightprice = flightrow_flight
-    print("항공권 가격: {}".format(flightprice))
-    
-    
+    #항공기 편도 가격. <50000 만 프린트
+    if flightPriceFinal<50000:
+        print()
+        #항공사 이름.
+        flightName = flightrow_flight.find("div",{"class":"heading"}).img["alt"]
+        print("항공사 이름: {}".format(flightName))
+        
+        #비행 시간.
+        flightTime = flights[i].find_all("b",{'class':'route_time__-2Z1T'})
+        
+        #비행기 출발시간.
+        flightStart = flightTime[0].get_text()
+        print("출발 시간 : {}".format(flightStart))
+        #비행기 도착시간.
+        flightEnd = flightTime[1].get_text()
+        print("도착 시간 : {}".format(flightEnd))
+        #항공권 가격.
+        print("항공권 가격: {}원".format(flightPrice))
+        print("-"*40)
+        
+        #리스트에 담기.
+        flightList = [flightName, flightStart, flightEnd, flightPrice]
 
-# page_url = browser.page_source
-
-# soup = BeautifulSoup(page_url,"lxml")
-# airs = soup.find_all("div",{"class":"domestic_Flight__sK0eA result"})
-# print(len(airs))
-
-
-# page_url = browser.page_source
-# soup = BeautifulSoup(page_url,"lxml")
-
-# planes = soup.find_all("div",{"class":"domestic_Flight__sK0eA result"})
-# print(len(planes))
-# plane1 = planes[0].find("div",{"class":"domestic_inner__15-bD"})
-# plane1.find("div",{"class":"domestic_schedule__1Whiq"})
-# #항공사 이름.
-# planed = plane1.find("div",{"class":"domestic_item__2B--k"})
-# plane1name = planed.find("div",{"class":"heading"}).img["alt"]
-# #항공사 출발시각.
-# plane1s = planed.find("div",{"class":"route_airport__3VT7M"})
+        writer.writerow(flightList)
+f.close()
 
 
