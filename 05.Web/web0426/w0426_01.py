@@ -23,7 +23,7 @@ f=open(filename,"w",encoding="utf-8-sig",newline="")
 writer =csv.writer(f)
 
 # 상단제목 저장
-title="제목 평점 가격 링크".split(" ")
+title="제목,평점,가격,링크".split(",")
 writer.writerow(title)
 
 # webdriver옵션 가져오기
@@ -112,7 +112,7 @@ for i,m_article in enumerate(m_articles):
     print(img_movie)
     # 이미지다운로드
     res_img = requests.get(img_movie)
-    with open("movie_{}.jpg".format(i),"wb") as f:
+    with open("movie{}_{}.jpg".format(i+1, title),"wb") as f:
         f.write(res_img.content)
         
     # 화면 출력

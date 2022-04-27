@@ -5,9 +5,9 @@ from email.mime.text import MIMEText
 smtpName = "smtp.naver.com" # 메일서버주소
 smtpPort = 587              # 메일서버 포트번호
 
-sendEmail="onulee@naver.com"  # 자신의 아이디
-password="1111"               # 자신의 패스워드
-recvEmail="onulee@naver.com"  # 받는사람 주소
+sendEmail="mayitshe87@naver.com"  # 자신의 아이디
+password="@$matrix87"               # 자신의 패스워드
+recvEmail="mayitshe@naver.com"  # 받는사람 주소
 
 # 글쓰기 제목,내용
 title="파이썬 이메일 보내기 수업"
