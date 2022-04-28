@@ -17,7 +17,10 @@ options.add_experimental_option("detach", True)
 # # 화면숨김
 # options.headless = True
 # # 화면 최대화
-# options.add_argument("window-size=1920x1080")
+options.add_argument("window-size=1920x1080")
+#헤더 옵션 추가.
+options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36")
+
 
 # 브라우저 열기
 browser = webdriver.Chrome(options=options)
@@ -29,7 +32,7 @@ filename = "yanolja.csv"
 f=open(filename,"w",encoding="utf-8-sig",newline="")
 writer = csv.writer(f)
 # ,분리해서 list타입으로 반환
-title="숙소,평점,가격,링크".split(",")
+title="번호,숙소,평점,가격,링크".split(",")
 # title csv에 저장
 writer.writerow(title)
 
@@ -114,10 +117,11 @@ for i,item in enumerate(items):
 
     # csv에 모든 숙소 저장
     data=[]
-    data.append(title)
-    data.append(rate)
-    data.append(price)
-    data.append(item_url)
+    # data.append(title)
+    # data.append(rate)
+    # data.append(price)
+    # data.append(item_url)
+    data= [i+1,title, rate, price, item_url]
     writer.writerow(data)
 
     # 파일저장
@@ -127,7 +131,7 @@ for i,item in enumerate(items):
     img_item = img_item[temp:-3]
     print("파일 위치 : ",img_item)
     res_img = requests.get(img_item)
-    with open("item_{}.jpg".format(i),"wb") as f:
+    with open("item{}_{}.jpg".format(i+1,title),"wb") as f:
         f.write(res_img.content)
 f.close()
 # print(soup.prettify())
