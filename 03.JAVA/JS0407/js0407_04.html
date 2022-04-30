@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        //제이쿼리 선언
+       $(function(){
+        //./js/stuData.json    
+        $("#ajaxBtn").click(function(){
+            //ajax선언
+            $.ajax({
+                url:"js/stuData.json",
+                dataType:"json",
+                success:function(data){    
+                    sCount=0
+                    alert('성공 : ' +data.length)
+                    let str=''
+                    let total =0
+                    let avg =0
+                    for(let i=0; i<data.length; i++){
+                        str += '<tr>'
+                        str += '<td>'+data[i].stuNo+'</td>'
+                        str += '<td>'+data[i].stuName+'</td>'
+                        str += '<td>'+data[i].kor+'</td>'
+                        str += '<td>'+data[i].eng+'</td>'
+                        str += '<td>'+data[i].math+'</td>'
+                        total =(data[i].kor+data[i].eng+data[i].math)
+                        str += '<td>'+total+'</td>'
+                        avg = (total/3).toFixed(2)
+                        str += '<td>'+avg+'</td>'
+                        str += '</tr>'
+                        sCount++
+                    }
+
+                    $("#tbody").html(str)
+                },
+                error:function(){
+                    alert('실패')
+                }
+            })//ajax
+        })//ajaxBtn 학생성적 가지고 오기
+       })//function
+
+    </script>
+    <style>
+        div{width: 1100px; margin: 0 auto;}
+        #ajaxBtn{width: 200px; height: 50px; margin: 50px 0 30px 0;
+        cursor: pointer;}
+        table,th,td{border: 1px solid black ; border-collapse: collapse;
+            width: 1100px; margin-top: 50px; margin: 0 auto; text-align: center;}
+        th,td{height: 30px;}
+
+    </style>
+</head>
+<body>
+    <div>
+        <button id="ajaxBtn" >학생성적가져오기</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+                <th>합계</th>
+                <th>평균</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td>1</td>
+                <td>hong</td>
+                <td>100</td>
+                <td>100</td>
+                <td>100</td>
+                <td>300</td>
+                <td>100</td>
+            </tr>
+
+        </tbody>
+    </table>    
+
+</body>
+</html>
