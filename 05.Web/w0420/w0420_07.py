@@ -57,10 +57,10 @@ for i in range(1,3):
         if item_att <4.5 or item_attpre_cnt <1000 or item_buy_count < 100:
             continue
 
-        print("제품 이름: {}".format(item_name))
-        print("제품 가격: {}원".format(item_price))
-        print("후기평점 : {} 점".format(item_att))
-        print("후기 수: {}개".format(item_attpre_cnt))
-        print("구매 개수: {}개".format(item_buy_count))
+        print("제품 이름     : {}".format(item_name))
+        print("제품 가격     : {}원".format(item_price))
+        print("후기평점      : {} 점".format(item_att))
+        print("후기 수       : {}개".format(item_attpre_cnt))
+        print("구매 개수     : {}개".format(item_buy_count))
         print("바로가기 링크 :{}".format(item_url))
         print("="*70)

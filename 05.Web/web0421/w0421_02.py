@@ -46,10 +46,10 @@ for year in range(2017,2022):
             f.write(img_res.content)
 
 
-
         #상위 5개 이미지URL만 출력    
         if i>=4:
             break
+f.close()
         
         
     # for i, image in enumerate(images):

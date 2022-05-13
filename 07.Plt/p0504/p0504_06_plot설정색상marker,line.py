@@ -1,3 +1,4 @@
+from cProfile import label
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
@@ -27,10 +28,10 @@ z=df['영어']
 # ms:markersize, mec:markeredgecolor, mfc:markerfacecolor 
 # plt.plot(x,y,'bo-',linewidth=2,ms=5,mec='red',mfc='yellow',label='성적')
 # alpha : 투명도조절 (0.0-1.0)
-plt.plot(x,y,'ko-',linewidth=2,label='성적')
-plt.plot(x,z,'bo-',linewidth=2,alpha=0.2)
+plt.plot(x,y,'ko-',linewidth=2,label='국어성적')
+plt.plot(x,z,'bo-',linewidth=2,alpha=0.2,label='영어성적')
 
-plt.legend(loc='upper right')
+plt.legend(loc='lower right')
 plt.title('성적그래프')
 
 plt.xlabel('이름',loc='center')
