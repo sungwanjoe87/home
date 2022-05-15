@@ -35,9 +35,10 @@ for i in range(6):
     if my_num[i] in lotto:
         l_count += 1 
         ok_num.append(my_num[i])
-    
+
+
 # 5. 출력    
-print('로또번호 : ',lotto)    
+print('로또번호 : ',sorted(lotto))    
 print('입력번호 : ',my_num)
 print('맞춘 개수 :',l_count)
 print('맞춘번호 :',ok_num)

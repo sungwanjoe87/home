@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium import *
 import time
 import pyautogui
 import re
@@ -31,8 +32,6 @@ options = webdriver.ChromeOptions()
 # 브라우저 종료되지 않게 하는 options
 options.add_experimental_option("detach", True)
 # 화면 열리지 않고 실행
-
-
 options.headless = True
 # 화면 최대화 - 모니터 최대화 화면과 일치해야 함.
 options.add_argument("window-size=1920x1080")
