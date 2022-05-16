@@ -1,7 +1,6 @@
 # 막대 그래프
 import matplotlib.pyplot as plt
 import matplotlib
-from pyparsing import col
 matplotlib.rcParams['font.family'] = 'Malgun Gothic'
 # matplotlib.rcParams['font.family'] = 'AppleGothic'
 matplotlib.rcParams['font.size'] = 15
