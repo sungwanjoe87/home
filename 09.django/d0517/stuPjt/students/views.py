@@ -35,7 +35,6 @@ def stuList(request):
 
 #3. 학생 상세 페이지 stuView
 def stuView(request,name,major):
-    # name = request.GET.get('name')
     # name변수를 가지고 학생 검색 - 타입 : Student객체
     qs = Student.objects.get(s_name=name)
     context={'stu':qs}
