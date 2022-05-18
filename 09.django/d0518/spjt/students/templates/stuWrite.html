@@ -9,6 +9,7 @@
         function formbtn(){
             if(document.getElementById('name').value==''){
                 alert('이름을 입력하셔야 합니다.')
+                document.getElementById('name').focus()
                 return false
             }
             return document.frm.submit()
@@ -30,6 +31,7 @@
         <input type='text' name='age'><br>
         <label>학년</label>
         <input type='text' name='grade'><br>
+
         <label>[ 성별 ]</label><br>
         <input type='radio' name='gender' id='male' value='남자'>
         <label for='male'>남자</label>
