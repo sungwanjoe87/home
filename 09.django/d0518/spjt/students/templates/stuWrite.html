@@ -24,7 +24,7 @@
     <form action="{% url 'students:stuWriteOk' %}" method='post' name='frm'>
         {% csrf_token %}
         <label>학생이름</label>
-        <input type='text' id="name" name='name'><br>
+        <input type='text' id='name' name='name'><br>
         <label>학과</label>
         <input type='text' name='major'><br>
         <label>나이</label>
