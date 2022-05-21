@@ -26,8 +26,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
-    'member',
+    'home', #index연결
+    'member', #login 있는 member앱
+    'freeboard',
+
 ]
 
 MIDDLEWARE = [

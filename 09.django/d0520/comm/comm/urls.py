@@ -5,4 +5,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('member/', include('member.urls')),
+     # freeboard app연결
+    path('freeboard/',include('freeboard.urls')),
 ]
