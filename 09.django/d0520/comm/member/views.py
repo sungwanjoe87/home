@@ -26,3 +26,9 @@ def login(request):
 def logout(request):
     request.session.clear()
     return redirect('/')
+
+
+def list(request):
+    qs = Member.objects.order_by('id')
+    context = {'memberList':qs}
+    return render (request,'list.html',context)

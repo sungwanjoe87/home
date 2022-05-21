@@ -7,4 +7,6 @@ urlpatterns = [
     path('login/',views.login,name='login'),
     # logout페이지 연결
     path('logout/',views.logout,name='logout'),
+        #전체 회원 리스트
+    path('list/',views.list, name='list'),
 ]
