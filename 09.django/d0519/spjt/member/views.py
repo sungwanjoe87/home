@@ -33,6 +33,7 @@ def login(request):
             request.session['session_name']=qs.m_name
             request.session['msg'] = '정상적으로 로그인 되었습니다.'
 
+            #메인페이지로 리턴.
             return redirect('/')
         else:
             msg = '아이디 또는 패스워드가 일치하지 않습니다. 다시 로그인 하세요.'
