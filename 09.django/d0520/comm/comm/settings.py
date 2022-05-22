@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home', #index연결
     'member', #login 있는 member앱
-    'freeboard',
+    'freeboard', #게시판 관련 freeboard앱.
 
 ]
 

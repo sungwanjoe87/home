@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from member.models import Member
 
-
+# login 함수.
 def login(request):
     if request.method == 'GET':
         return render (request, 'login.html')
@@ -28,6 +28,7 @@ def logout(request):
     return redirect('/')
 
 
+# list 페이지 함수.
 def list(request):
     qs = Member.objects.order_by('id')
     context = {'memberList':qs}
