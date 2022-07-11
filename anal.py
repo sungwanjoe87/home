@@ -57,7 +57,7 @@ import seaborn as sns
 
 ### 컬럼 확인시 EmployeeCount, Over18, StandardHours, EmployeeNumber 는 추론에 아무런 데이터를 제공하지 않는다.
 
-data_int = hr_df[['DailyRate',
+data_int = hr_df[['Age','DailyRate',
         'DistanceFromHome', 'Education', 
         'EnvironmentSatisfaction', 'HourlyRate',
        'JobInvolvement', 'JobLevel', 'JobSatisfaction',
@@ -104,48 +104,46 @@ print(data)
 #############################################################################################################
 ## data의 분석에서 컬럼의 영향력 파악분석
 
+# scale_columns = ['Age','DailyRate',
+#         'DistanceFromHome', 'Education', 
+#         'EnvironmentSatisfaction', 'HourlyRate',
+#        'JobInvolvement', 'JobLevel', 'JobSatisfaction',
+#         'MonthlyIncome', 'MonthlyRate', 'NumCompaniesWorked',
+#         'PercentSalaryHike', 'PerformanceRating',
+#        'RelationshipSatisfaction', 'StockOptionLevel',
+#        'TotalWorkingYears', 'TrainingTimesLastYear', 'WorkLifeBalance',
+#        'YearsAtCompany', 'YearsInCurrentRole', 'YearsSinceLastPromotion',
+#        'YearsWithCurrManager']
 
+# corr =data[scale_columns].corr(method='pearson')
+# show_cols = ['Age','DailyRate','DistanceFromHome', 'Education', 
+#         'EnvironmentSatisfaction', 'HourlyRate',
+#        'JobInvolvement', 'JobLevel', 'JobSatisfaction',
+#         'MonthlyIncome', 'MonthlyRate', 'NumCompaniesWorked',
+#         'PercentSalaryHike', 'PerformanceRating',
+#        'RelationshipSatisfaction', 'StockOptionLevel',
+#        'TotalWorkingYears', 'TrainingTimesLastYear', 'WorkLifeBalance',
+#        'YearsAtCompany', 'YearsInCurrentRole', 'YearsSinceLastPromotion',
+#        'YearsWithCurrManager']
 
-scale_columns = ['DailyRate',
-        'DistanceFromHome', 'Education', 
-        'EnvironmentSatisfaction', 'HourlyRate',
-       'JobInvolvement', 'JobLevel', 'JobSatisfaction',
-        'MonthlyIncome', 'MonthlyRate', 'NumCompaniesWorked',
-        'PercentSalaryHike', 'PerformanceRating',
-       'RelationshipSatisfaction', 'StockOptionLevel',
-       'TotalWorkingYears', 'TrainingTimesLastYear', 'WorkLifeBalance',
-       'YearsAtCompany', 'YearsInCurrentRole', 'YearsSinceLastPromotion',
-       'YearsWithCurrManager']
-
-corr =data[scale_columns].corr(method='pearson')
-show_cols = ['DailyRate','DistanceFromHome', 'Education', 
-        'EnvironmentSatisfaction', 'HourlyRate',
-       'JobInvolvement', 'JobLevel', 'JobSatisfaction',
-        'MonthlyIncome', 'MonthlyRate', 'NumCompaniesWorked',
-        'PercentSalaryHike', 'PerformanceRating',
-       'RelationshipSatisfaction', 'StockOptionLevel',
-       'TotalWorkingYears', 'TrainingTimesLastYear', 'WorkLifeBalance',
-       'YearsAtCompany', 'YearsInCurrentRole', 'YearsSinceLastPromotion',
-       'YearsWithCurrManager']
-
-hm = sns.heatmap(corr.values,
-                 cbar = True,
-                 annot = True,
-                 square = True,
-                 fmt='.2f',
-                 annot_kws = {'size':15},
-                 yticklabels=show_cols,
-                 xticklabels=show_cols
-                 )
-plt.tight_layout()
-plt.xticks(rotation=45)
-plt.show()
+# hm = sns.heatmap(corr.values,
+#                  cbar = True,
+#                  annot = True,
+#                  square = True,
+#                  fmt='.2f',
+#                  annot_kws = {'size':15},
+#                  yticklabels=show_cols,
+#                  xticklabels=show_cols
+#                  )
+# plt.tight_layout()
+# plt.xticks(rotation=50)
+# plt.show()
 #############################################################################################################
 
 
 #### 핫 맵으로 알 수 있는 것들.
 
-## 성과도=PerformanceRating, 팀원수 = NumCompaniesWorked, 기본급=MonthlyIncome, 근속년수=YearsAtCompany, 
+## 나이=Age, 성과도=PerformanceRating, 팀원수 = NumCompaniesWorked, 기본급=MonthlyIncome, 근속년수=YearsAtCompany, 
 ## 업무 지속기간 =YearsInCurrentRole, 마지막진급한 해=YearsSinceLastPromotion, 현 담당자와의 업무기간=YearsWithCurrManager, 직급=JobLevel 등이 
 ## 퇴직의사와 영향이 큰 것을 알 수 있다.
 
@@ -177,18 +175,19 @@ print(vif.round(1))
 
 #### label 선택.
 label = hr_df['Attrition'].to_numpy()
+# print(label)
 
-# # print(label)
 
 #### 데이터 나누기.
 
 from sklearn.model_selection import train_test_split
 
 train_data, test_data, train_label, test_label = \
-    train_test_split(data,label,test_size = 0.2)
-    
-print('훈련용 데이터: ',train_data)
-print('훈련용 라벨: ',train_label)
+    train_test_split(data,label,test_size = 0.2,random_state=42)
+
+
+# print('훈련용 데이터: ',train_data)
+# print('훈련용 라벨: ',train_label)
 print("="*60)
 # print(test_data)
 # print(test_label)
@@ -206,31 +205,24 @@ from sklearn.metrics import accuracy_score
 #### 알고리즘 선택.
 
 dt = DecisionTreeClassifier()
-
 lr = LogisticRegression()
-
 rfc = RandomForestClassifier()
-
-xgb = XGBClassifier()
 
 ### 알고리즘 훈련.
 
 dt.fit(train_data,train_label)
 # lr.fit(train_data,train_label)
 rfc.fit(train_data,train_label)
-# xgb.fit(train_data,train_label)
 
 ### 예측.
 
-dtr = dt.predict(test_data[:10])
+dtr = dt.predict(test_data[:20])
 # lrr = lr.predict(test_data[:10])
-rfcr = rfc.predict(test_data[:10])
-# xgbr = xgb.predict(test_data[:5])
+rfcr = rfc.predict(test_data[:20])
 
 print('dt의 결과값 : ',dtr)
 # print('lr의 결과값 : ',lrr)
 print('rfc의 결과값 : ',rfcr)
-# print('xgb의 결과값 : ',xgbr)
 
 ### 예측 정확도
 print("="*60)
@@ -252,3 +244,29 @@ print('rfcr 테스트 정확도 : ',rfcr_score2)
 print("="*60)
 
 
+#### XGB 용 작업.
+
+###라벨 Yes : 1 , No : 0으로 변환.
+xgb_label = hr_df['Attrition'].map({'Yes':1, 'No':0})
+# print(xgb_label)
+
+###데이터 나누기 (다른 것과 비교하기 위해 똑같이 옵션 주기.)
+train_data, test_data, train_label, test_label = \
+    train_test_split(data,xgb_label,test_size = 0.2,random_state=42)
+    
+###XGB 선택하기.   
+xgb = XGBClassifier()
+
+###XGB 알고리즘 훈련.
+xgb.fit(train_data,train_label)
+
+###XGB 예측.
+xgbr = xgb.predict(test_data[:20])
+print('xgb의 결과값(Yes:1, No:0) : ',xgbr)
+
+###XGB 정확도 확인.
+xgb_score1 = xgb.score(train_data,train_label)
+xgb_score2 = xgb.score(test_data,test_label)
+print('xgb 훈련 정확도 : ',xgb_score1)
+print('xgb 테스트 정확도 : ',xgb_score2)
+print("="*60)
